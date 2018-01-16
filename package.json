@@ -1,0 +1,17 @@
+{
+  "dependencies": {
+    "chokidar": "^2.0.0",
+    "ssh2-sftp-client": "^2.0.1"
+  },
+  "name": "watch-sftp.git",
+  "version": "1.0.0",
+  "description": "A program that watch directory, when file changed, it is push to a server over sftp",
+  "main": "index.js",
+  "repository": "git@github.com:DarkIsDude/watch-sftp.git",
+  "author": "DarkIsDude <edouard.comtet@gmail.com>",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "start": "node index.js"
+  }
+}
