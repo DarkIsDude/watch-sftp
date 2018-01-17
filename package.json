@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "chokidar": "^2.0.0",
+    "queue": "^4.4.2",
     "ssh2-sftp-client": "^2.0.1"
   },
   "name": "watch-sftp.git",
@@ -12,6 +13,6 @@
   "license": "MIT",
   "private": false,
   "scripts": {
-    "start": "node index.js"
+    "start": "node src/index.js"
   }
 }

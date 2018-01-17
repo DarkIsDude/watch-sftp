@@ -1,6 +1,6 @@
 const path = require('path');
 
-const ROOT = path.resolve('../hosco-v2.git');
+const ROOT = path.resolve(__dirname, '../../hosco-v2.git');
 
 module.exports = {
     sftp: {
