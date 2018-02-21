@@ -15,5 +15,6 @@ module.exports = {
         path.resolve(ROOT, 'node_modules'),
         path.resolve(ROOT, '.git'),
         path.resolve(ROOT, '.idea'),
+        path.resolve(ROOT, '.sonarlint')
     ]
 }

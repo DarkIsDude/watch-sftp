@@ -8,17 +8,28 @@ function relativePath(absolutePath) {
     return path.relative(param.root, absolutePath);
 }
 
+function logDate() {
+    function pad(value) {
+        const string = value.toString();
+        return string.length == 2 ? string : "0" + string;
+    }
+
+    const now = new Date();
+
+    return pad(now.getHours()) + ':' + pad(now.getMinutes()) + ':' + pad(now.getSeconds());
+}
+
 function processEvent(eventPath, action, debugType, debugAction) {
     queue.push(() => {
         return new Promise(async (resolve, reject) => {
             try {
-                console.info(`${ debugType } ${ eventPath } must be ${ debugAction }`);
+                console.info(`${ logDate() } ${ debugType } ${ eventPath } must be ${ debugAction }`);
                 await action(relativePath(eventPath));
-                console.info(`${ debugType } ${ eventPath } has been ${ debugAction }`);
+                console.info(`${ logDate() } ${ debugType } ${ eventPath } has been ${ debugAction }`);
                 resolve();
             } catch (e) {
                 reject(e);
-                console.error(`${ debugType } ${ eventPath } hasn\'t been ${ debugAction }`);
+                console.error(`${ logDate() } ${ debugType } ${ eventPath } hasn\'t been ${ debugAction }`);
             }
         });
     });
