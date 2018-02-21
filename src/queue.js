@@ -2,7 +2,7 @@ const queue = require('queue');
 
 var q = queue({
     autostart: true,
-    concurrency: 1
+    concurrency: 2
 });
 
 q.on('error', (result, job) => {
@@ -12,5 +12,6 @@ q.on('error', (result, job) => {
 module.exports = {
     push: (promise) => {
         q.push(promise);
-    }
+    },
+    length: () => q.length,
 }

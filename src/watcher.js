@@ -19,17 +19,21 @@ function logDate() {
     return pad(now.getHours()) + ':' + pad(now.getMinutes()) + ':' + pad(now.getSeconds());
 }
 
+function log(msg) {
+    console.info(`${ logDate() } (${ queue.length() }): ${ msg } `);
+}
+
 function processEvent(eventPath, action, debugType, debugAction) {
     queue.push(() => {
         return new Promise(async (resolve, reject) => {
             try {
-                console.info(`${ logDate() } ${ debugType } ${ eventPath } must be ${ debugAction }`);
+                log(`${ debugType } ${ eventPath } must be ${ debugAction }`);
                 await action(relativePath(eventPath));
-                console.info(`${ logDate() } ${ debugType } ${ eventPath } has been ${ debugAction }`);
+                log(`${ debugType } ${ eventPath } has been ${ debugAction }`);
                 resolve();
             } catch (e) {
                 reject(e);
-                console.error(`${ logDate() } ${ debugType } ${ eventPath } hasn\'t been ${ debugAction }`);
+                log(`${ debugType } ${ eventPath } hasn\'t been ${ debugAction }`);
             }
         });
     });
